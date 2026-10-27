@@ -1,98 +1,109 @@
 📊 Analýza docházky
 
-Konzolová aplikace v Pythonu pro zpracování a vyhodnocování zaměstnanecké docházky.
+Konzolová aplikace v Pythonu pro analýzu zaměstnanecké docházky.
 
-Aplikace načítá záznamy z CSV souboru, vypočítává statistiky zaměstnanců a umožňuje vedení firmy získat přehled o odpracované době, příchodech a délce směn.
+Projekt zpracovává data z docházkového systému, vypočítává statistiky zaměstnanců a vytváří přehledné výstupy pro lepší orientaci v odpracované době.
 
 ✨ Funkce
-📁 Načítání dat – podpora CSV souborů se středníkem nebo tabulátorem jako oddělovačem.
-⏱️ Výpočet odpracované doby – délka jednotlivých směn, celkový počet hodin a průměrná délka směny.
-🏆 Žebříček zaměstnanců – seřazení podle celkové odpracované doby.
-📅 Denní statistiky – první příchod, poslední odchod a průměrná délka směny.
-🔎 Vyhledávání – nalezení zaměstnance podle jména nebo čísla čipu.
-⚠️ Kontrola docházky – upozornění na pozdní příchody a neobvykle krátké směny.
-💾 Export do JSON – uložení souhrnných statistik a zpracovaných záznamů.
-🎨 Terminálové rozhraní – přehlednější výpisy pomocí knihovny Rich.
+📁 Načítání docházky ze souboru CSV.
+⏱️ Výpočet délky směn, celkové odpracované doby a průměrné délky směny.
+🏆 Žebříček zaměstnanců podle odpracovaných hodin.
+📅 Denní statistiky příchodů a odchodů.
+🔎 Vyhledávání zaměstnanců podle jména nebo čísla čipu.
+⚠️ Kontrola pozdních příchodů a krátkých směn.
+💾 Export výsledků do formátu JSON.
+🎨 Přehlednější výpisy v terminálu pomocí knihovny Rich.
 🛠️ Použité technologie
 Python 3
-Rich
-CSV a JSON
-datetime, collections, pathlib
-🚀 Instalace a spuštění
-1. Naklonování projektu
-bash
+Rich – formátování výstupu v terminálu
+CSV – načítání vstupních dat
+JSON – ukládání výsledků
+datetime – práce s datem a časem
+collections a pathlib – zpracování dat a práce se soubory
+🚀 Instalace
+1. Naklonování repozitáře
+powershell
 git clone https://github.com/JakubDr/analyza-dochazky.git
 cd analyza-dochazky
 
 2. Vytvoření virtuálního prostředí
-
-Windows – PowerShell:
-
 powershell
 py -m venv .venv
+
+3. Aktivace virtuálního prostředí
+powershell
 .\.venv\Scripts\Activate.ps1
 
-3. Instalace závislostí
+4. Instalace knihoven
 powershell
 python -m pip install -r requirements.txt
 
-4. Spuštění aplikace
+▶️ Spuštění aplikace
 
-Do složky projektu vlož vstupní CSV soubor a spusť:
+Připrav CSV soubor s docházkovými záznamy a spusť:
 
 powershell
 python dochazka.py dochazka.csv
 
 
-Aplikace následně zobrazí konzolové menu, ze kterého lze vybírat jednotlivé analýzy.
+Název vstupního souboru lze změnit podle potřeby.
+
+Po spuštění se zobrazí konzolové menu, ve kterém si uživatel vybere požadovanou analýzu.
 
 📂 Struktura projektu
 text
 analyza-dochazky/
-├── dochazka.py       # Hlavní program
-├── dochazka.csv      # Vstupní data (lokální nebo ukázková)
-├── requirements.txt  # Závislosti projektu
-├── .gitignore        # Ignorované soubory
-├── README.md         # Dokumentace
-└── vysledek.json     # Exportované výsledky
+├── dochazka.py
+├── requirements.txt
+├── .gitignore
+├── README.md
+├── dochazka.csv
+└── vysledek.json
 
+Soubor	Popis
+dochazka.py	Hlavní zdrojový kód aplikace
+requirements.txt	Seznam potřebných knihoven
+.gitignore	Soubory, které se nemají nahrávat do Gitu
+README.md	Dokumentace projektu
+dochazka.csv	Vstupní data
+vysledek.json	Exportované výsledky analýzy
 📄 Formát vstupních dat
 
-CSV soubor obsahuje čtyři sloupce:
+Vstupní CSV obsahuje následující údaje:
 
 Sloupec	Význam
-číslo čipu	Jedinečný identifikátor zaměstnance
-zaměstnanec	Jméno zaměstnance
-příchod	Datum a čas příchodu
-odchod	Datum a čas odchodu
+Číslo čipu	Identifikátor zaměstnance
+Zaměstnanec	Jméno zaměstnance
+Příchod	Datum a čas příchodu
+Odchod	Datum a čas odchodu
 
-Aplikace podporuje například tyto formáty data a času:
+Podporované formáty data a času zahrnují například:
 
+text
 12.10.2026 7:02
 2026-10-12 07:02
 
+
 Každý řádek představuje jeden pobyt zaměstnance na pracovišti.
 
-💡 Výstup a využití
+📈 Výstup analýzy
 
-Zpracované výsledky lze exportovat do souboru vysledek.json. Obsahují souhrny za zaměstnance, denní statistiky a jednotlivé směny.
+Aplikace dokáže vytvořit přehled odpracovaných hodin jednotlivých zaměstnanců, denní statistiky a seznam zaznamenaných směn.
 
-Výsledky mohou pomoci například při:
+Výsledky lze uložit do souboru vysledek.json a dále využít pro zpracování nebo přehledné uchování statistik.
 
-porovnávání odpracované doby zaměstnanců,
-sledování docházkových trendů,
-hledání neobvyklých záznamů,
-získávání souhrnných podkladů pro vedení firmy.
+Poznámka: Délka směny se počítá jako rozdíl mezi příchodem a odchodem. Bez dalších údajů aplikace automaticky neodečítá přestávky a neurčuje skutečně placenou pracovní dobu.
 
-Poznámka: Délka směny se počítá z rozdílu mezi příchodem a odchodem. Bez dalších údajů aplikace automaticky neodečítá přestávky ani neurčuje skutečně placenou pracovní dobu.
+🔒 Ochrana osobních údajů
 
-🔒 Ochrana dat
+Docházková data mohou obsahovat osobní údaje zaměstnanců. Do veřejného repozitáře proto nepatří skutečné firemní záznamy ani exporty obsahující osobní údaje. Pro demonstraci aplikace používejte anonymizovaná ukázková data.
 
-Docházková data mohou obsahovat osobní údaje. Do veřejného repozitáře proto nepatří skutečné firemní záznamy ani exporty obsahující osobní údaje. Pro ukázky používejte anonymizovaná data.
+🎯 Cíl projektu
+
+Cílem projektu je procvičit práci s CSV a JSON, funkcemi, seznamy, slovníky, podmínkami, cykly a datem a časem v Pythonu a vytvořit praktický nástroj pro analýzu docházkových údajů.
 
 👨‍💻 Autor
 
-Jakub Drastík
-Michael Mička
+JakubDr
 
-Školní projekt – zpracování a analýza dat v Pythonu.
+Školní projekt – programování v Pythonu.
