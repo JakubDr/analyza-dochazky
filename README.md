@@ -1,4 +1,4 @@
-📊 Analýza docházky
+# 📊 Analýza docházky
 
 Konzolová aplikace v Pythonu pro analýzu zaměstnanecké docházky.
 
