@@ -106,5 +106,5 @@ Cílem je procvičit práci se soubory CSV a JSON, funkcemi, seznamy, slovníky,
 
 ## 👨‍💻 Autor
 
-* **JakubDr**
+* **Jakub Drastík a Michael Mička**
 * Školní projekt – programování v Pythonu.
